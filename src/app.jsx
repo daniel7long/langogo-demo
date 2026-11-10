@@ -251,7 +251,7 @@ function AccessibilitySlide() {
           <h2><span className="tag"><Check /></span>Works well</h2>
           <ul>
             <li><b>Open access:</b> free, runs in a browser, no install, phone or laptop.</li>
-            <li><b>10 languages;</b> sign in with Google or email.</li>
+            <li><b>16 languages;</b> sign in with Google or email.</li>
             <li><b>Low-anxiety design:</b> private practice, one-tap retry, no failing grade, opt-in leaderboard.</li>
             <li><b>Two channels:</b> every model line is shown as text and played as audio.</li>
           </ul>
@@ -262,7 +262,7 @@ function AccessibilitySlide() {
             <li><b>Speech is the only path.</b> Learners with speech or hearing disabilities have no equivalent route through a lesson.</li>
             <li><b>Scoring assumes typical speech.</b> Strong accents, stutters or atypical speech can be scored unfairly.</li>
             <li><b>Needs</b> a stable connection, a microphone and a quiet place.</li>
-            <li><b>English-only interface;</b> white-on-orange text is about 2.7–3.8:1, under the 4.5:1 WCAG AA level.</li>
+            <li><b>English-only interface;</b> white-on-orange text (about 2.7–3.8:1) is under the 4.5:1 WCAG AA level for normal-size text.</li>
           </ul>
         </div>
       </div>
@@ -347,8 +347,8 @@ function CostSlide() {
 const LIMITS = [
   ['Simulated interaction', 'Scripted dialogues and an AI partner are not the co-constructed, socially situated talk that builds interactional competence (Young, 2011).'],
   ['Scores form, not communication', 'Feedback rates pronunciation, fluency and completeness. Pragmatics, turn-taking and negotiating meaning go unmeasured.'],
-  ['Speech recognition errors', 'Automatic scoring is less accurate for learner accents and mistakes, so some feedback will be wrong.'],
-  ['No evidence yet', 'Whether practice transfers to real conversation is untested. The first small pilot (7 learners, about 3 weeks) is still running.'],
+  ['Speech recognition errors', 'Automatic scoring is less accurate for learner accents and mistakes, so some feedback might be inaccurate.'],
+  ['No evidence yet', 'Whether practice transfers to real conversation is untested. The first small pilot is still running.'],
 ];
 function LimitationsSlide() {
   return (
