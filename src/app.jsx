@@ -262,7 +262,6 @@ function AccessibilitySlide() {
             <li><b>Speech is the only path.</b> Learners with speech or hearing disabilities have no equivalent route through a lesson.</li>
             <li><b>Scoring assumes typical speech.</b> Strong accents, stutters or atypical speech can be scored unfairly.</li>
             <li><b>Needs</b> a stable connection, a microphone and a quiet place.</li>
-            <li><b>English-only interface;</b> white-on-orange text (about 2.7–3.8:1) is under the 4.5:1 WCAG AA level for normal-size text.</li>
           </ul>
         </div>
       </div>
