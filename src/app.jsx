@@ -6,7 +6,7 @@ const DEMO_URL = 'https://langogo-v3.vercel.app';
 const DEV_URL = 'https://github.com/daniel7long/langogo';
 const SLIDES = [
   { id: 'beef', label: 'The Beef', theme: 'light', steps: 0 },
-  { id: 'gap', label: 'The Gap', theme: 'dark', steps: 1 },
+  { id: 'gap', label: 'The Gap', theme: 'dark', steps: 3 },
   { id: 'app', label: 'The App', theme: 'dark', steps: 0 },
   { id: 'accessibility', label: 'Accessibility', theme: 'light', steps: 0 },
   { id: 'cost', label: 'Cost', theme: 'light', steps: 0 },
@@ -160,11 +160,24 @@ function BeefSlide() {
 
 /* ---------- 2. The GAP ---------- */
 function GapSlide({ step, onAdvance }) {
+  const show = (n) => (step < n ? ' wait' : '');
   return (
     <section className="slide gap" onClick={onAdvance}>
       <p className="eyebrow">Part 2 · The GAP</p>
-      <p className="gap-line1">We <span className="never">NEVER</span> improved our language <span className="comp">COMPETENCE</span>.</p>
-      <p className={'gap-line2' + (step < 1 ? ' wait' : '')} aria-hidden={step < 1}>What kind of language learning app do we need?</p>
+      <div className="gap-grid">
+        <div className="gap-left">
+          <p className="gap-q">What's the <span className="never">GAP</span> here?</p>
+          <ul className={'gap-nos' + show(1)} aria-hidden={step < 1}>
+            <li><b>No</b> Scaffolding</li>
+            <li><b>No</b> Motivation</li>
+            <li><b>No</b> Joy</li>
+          </ul>
+        </div>
+        <div className="gap-right">
+          <p className={'gap-line1' + show(2)} aria-hidden={step < 2}>We <span className="never">NEVER</span> improved our language <span className="comp">COMPETENCE</span>.</p>
+          <p className={'gap-line2' + show(3)} aria-hidden={step < 3}>What kind of language learning app do we need?</p>
+        </div>
+      </div>
     </section>
   );
 }
