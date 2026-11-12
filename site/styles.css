@@ -199,3 +199,16 @@ h1 em { font-style: normal; color: var(--primary); }
 .dev a { color: #FFD768; text-decoration: underline; text-underline-offset: 4px; font-weight: 900; }
 @keyframes pop { from { opacity: 0; transform: scale(.8) translateY(20px); } to { opacity: 1; transform: none; } }
 @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+
+/* 2 gap: two columns, four reveals (question, three No's, statement, closing question) */
+.gap-grid { display: grid; grid-template-columns: 560px 1fr; gap: 72px; align-items: center; }
+.gap-left { border-right: 3px solid var(--divider); padding-right: 56px; align-self: stretch; display: flex; flex-direction: column; justify-content: center; }
+.gap-q { font-weight: 900; font-size: 64px; line-height: 1.1; margin: 0; animation: rise .8s .15s ease both; }
+.gap-nos { list-style: none; margin: 44px 0 0; padding: 0; display: grid; gap: 18px; animation: rise .8s ease both; }
+.gap-nos li { font-weight: 800; font-size: 50px; line-height: 1.15; color: var(--text); }
+.gap-nos li b { font-weight: 900; color: var(--primary-bright); }
+.gap-grid .gap-line1 { font-size: 78px; line-height: 1.1; max-width: none; animation: rise .8s ease both; }
+.gap-grid .gap-line2 { font-size: 42px; margin-top: 44px; }
+.gap .wait { visibility: hidden; animation: none; }
+@media (prefers-reduced-motion: reduce) { .gap-q, .gap-nos { animation: none; } }
+.gap-q .never { color: var(--primary-bright); }
