@@ -170,7 +170,7 @@ function GapSlide({ step, onAdvance }) {
           <ul className={'gap-nos' + show(1)} aria-hidden={step < 1}>
             <li><b>No</b> Scaffolding</li>
             <li><b>No</b> Motivation</li>
-            <li><b>No</b> Joy</li>
+            <li><b>No</b> Enjoyment</li>
           </ul>
         </div>
         <div className="gap-right">
@@ -284,8 +284,8 @@ function AccessibilitySlide() {
 }
 
 /* ---------- 5. Cost ---------- */
-function CostTag({ id }) {
-  return <span className="cost-tag"><Flower id={id} />flowers</span>;
+function CostTag({ id, n }) {
+  return <span className="cost-tag"><Flower id={id} />{n ? n + ' flowers' : 'flowers'}</span>;
 }
 function CostSlide() {
   return (
@@ -294,7 +294,7 @@ function CostSlide() {
         <p className="eyebrow">Part 5 · Cost</p>
         <div className="big">Free</div>
         <span className="price">$0 to learn</span>
-        <p>No money changes hands. The only currency in Langogo is the flowers you earn by speaking.</p>
+        <p>You pay nothing. The only currency in Langogo is the flowers you earn by speaking.</p>
       </div>
       <div className="eco">
         <h2>Flowers are the <span>currency</span> of the Langogo ecosystem</h2>
@@ -317,35 +317,38 @@ function CostSlide() {
             <div className="tile">
               <div className="art">
                 <svg viewBox="0 0 92 82" aria-hidden="true">
-                  <path d="M10 58l36 14 36-14v8L46 80 10 66z" fill="#B24E08" /><path d="M10 58l36-12 36 12-36 14z" fill="#F47A20" />
-                  <path d="M14 42l32 12 32-12v8L46 62 14 50z" fill="#2F6A22" /><path d="M14 42l32-11 32 11-32 12z" fill="#5B9E4A" />
-                  <path d="M18 27l28 11 28-11v8L46 46 18 35z" fill="#C98A12" /><path d="M18 27l28-10 28 10-28 11z" fill="#FFD768" />
+                  <ellipse cx="46" cy="74" rx="26" ry="5" fill="#C98A12" opacity=".35" />
+                  <path d="M42 48h8v24h-8z" fill="#8A5A2B" /><path d="M46 48h4v24h-4z" fill="#6B4320" />
+                  <circle cx="46" cy="30" r="24" fill="#5B9E4A" /><circle cx="30" cy="40" r="14" fill="#4C8A3D" /><circle cx="62" cy="40" r="14" fill="#3F7A30" />
+                  <circle cx="40" cy="22" r="9" fill="#7DBE6B" opacity=".8" />
                 </svg>
               </div>
-              <div><b>Unlock more courses</b><span>New levels and languages</span></div>
-              <CostTag id="t1" />
+              <div><b>Plant a tree</b><span>With Ecologi</span></div>
+              <CostTag id="t1" n="100" />
             </div>
             <div className="tile">
               <div className="art">
                 <svg viewBox="0 0 92 82" aria-hidden="true">
-                  <path d="M8 16a8 8 0 0 1 8-8h36a8 8 0 0 1 8 8v22a8 8 0 0 1-8 8H30L18 57V46h-2a8 8 0 0 1-8-8z" fill="#5B9E4A" />
-                  <path d="M8 34v4a8 8 0 0 0 8 8h2v11l12-11h22a8 8 0 0 0 8-8v-4a8 8 0 0 1-8 8H30L18 53V42h-2a8 8 0 0 1-8-8z" fill="#2F6A22" />
-                  <path d="M38 40a7 7 0 0 1 7-7h32a7 7 0 0 1 7 7v19a7 7 0 0 1-7 7h-2v10L64 66H45a7 7 0 0 1-7-7z" fill="#F47A20" stroke="#DDEFC9" strokeWidth="3" />
-                  <circle cx="51" cy="50" r="3.2" fill="#fff" /><circle cx="61" cy="50" r="3.2" fill="#fff" /><circle cx="71" cy="50" r="3.2" fill="#fff" />
+                  <ellipse cx="46" cy="72" rx="28" ry="5" fill="#2F6A22" opacity=".3" />
+                  <path d="M34 22c-4-5 4-7 0-13M46 22c-4-5 4-7 0-13M58 22c-4-5 4-7 0-13" fill="none" stroke="#3F7A30" strokeWidth="3.5" strokeLinecap="round" />
+                  <ellipse cx="46" cy="36" rx="30" ry="9" fill="#FFD768" />
+                  <path d="M12 36h68c0 20-14 34-34 34S12 56 12 36z" fill="#F47A20" /><path d="M46 36h34c0 20-14 34-34 34z" fill="#D95F0E" />
+                  <rect x="32" y="68" width="28" height="6" rx="3" fill="#B24E08" />
                 </svg>
               </div>
-              <div><b>Unlock more topics</b><span>Conversations you care about</span></div>
-              <CostTag id="t2" />
+              <div><b>Donate a meal</b><span>With ShareTheMeal</span></div>
+              <CostTag id="t2" n="100" />
             </div>
             <div className="tile">
               <div className="art">
                 <svg viewBox="0 0 92 82" aria-hidden="true">
-                  <path d="M14 38h64v32a6 6 0 0 1-6 6H20a6 6 0 0 1-6-6z" fill="#F47A20" /><path d="M14 38h64v8H14z" fill="#B24E08" />
-                  <rect x="8" y="24" width="76" height="16" rx="5" fill="#FF9A52" /><rect x="40" y="24" width="12" height="52" fill="#FFD768" />
-                  <path d="M46 24c-6-14-24-14-22-4 1 6 12 6 22 4zm0 0c6-14 24-14 22-4-1 6-12 6-22 4z" fill="#FFD768" stroke="#C98A12" strokeWidth="2.5" />
+                  <rect x="46" y="10" width="38" height="46" rx="6" fill="#FFF8E1" stroke="#C98A12" strokeWidth="5" />
+                  <path d="M51 50l10-14 8 9 5-6 6 11z" fill="#5B9E4A" /><circle cx="74" cy="24" r="5" fill="#F47A20" />
+                  <path d="M22 26l-14 10 7 11 7-4v29h30V43l7 4 7-11-14-10c-2 7-8 9-15 9s-13-2-15-9z" fill="#F47A20" stroke="#B24E08" strokeWidth="2.5" strokeLinejoin="round" />
+                  <path d="M30 27c2 5 12 5 14 0" fill="none" stroke="#FFD768" strokeWidth="3.5" strokeLinecap="round" />
                 </svg>
               </div>
-              <div><b>Redeem rewards</b><span>Trade flowers for real perks</span></div>
+              <div><b>Outfits, frames, wallpapers</b><span>For your profile</span></div>
               <CostTag id="t3" />
             </div>
           </div>

@@ -212,3 +212,15 @@ h1 em { font-style: normal; color: var(--primary); }
 .gap .wait { visibility: hidden; animation: none; }
 @media (prefers-reduced-motion: reduce) { .gap-q, .gap-nos { animation: none; } }
 .gap-q .never { color: var(--primary-bright); }
+
+/* cost: more room for the three flower uses */
+.cost { grid-template-columns: 450px 1fr; }
+.eco-flow { grid-template-columns: 210px 50px 1fr; }
+.coin-scene { width: 200px; height: 200px; }
+.arrow svg { width: 50px; }
+.tile { grid-template-columns: 100px 1fr auto; gap: 18px; padding: 14px 20px 14px 14px; }
+.tile .art { width: 100px; }
+.tile b { font-size: 24px; line-height: 1.15; }
+.tile span { font-size: 18px; }
+.cost-tag { font-size: 19px; }
+.spend { margin-right: 14px; }
