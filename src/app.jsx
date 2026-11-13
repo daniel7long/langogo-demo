@@ -424,7 +424,7 @@ const LIMITS = [
   ['Simulated interaction', 'Scripted dialogues and an AI partner are not the co-constructed, socially situated talk that builds interactional competence (Young, 2011).'],
   ['Scores form, not communication', 'Feedback rates pronunciation, fluency and completeness. Pragmatics, turn-taking and negotiating meaning go unmeasured.'],
   ['Speech recognition errors', 'Automatic scoring is less accurate for learner accents and mistakes, so some feedback might be inaccurate.'],
-  ['No evidence yet', 'Whether practice transfers to real conversation is untested. The first small pilot is still running.'],
+  ['No evidence yet', 'Whether practice transfers to real conversation is untested. No relevant research has been conducted.'],
 ];
 function LimitationsSlide() {
   return (
