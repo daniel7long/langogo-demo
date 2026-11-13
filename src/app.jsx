@@ -86,6 +86,67 @@ function playIgnite() {
   });
 }
 
+let ackNodes = [];
+function stopAck() {
+  ackNodes.forEach((n) => { try { n.stop(); } catch (e) {} });
+  ackNodes = [];
+}
+/* Pop-up sound: a soft "pop", a sparkling bell run (C major pentatonic), then a warm chord and a little shimmer. */
+function playAck() {
+  const ctx = getCtx();
+  if (!ctx) return;
+  stopAck();
+  const t0 = ctx.currentTime + 0.03;
+  const master = ctx.createGain();
+  master.gain.value = 0.55;
+  master.connect(ctx.destination);
+  const keep = (n) => { ackNodes.push(n); return n; };
+
+  // 1. pop: a quick rising sine blip
+  const pop = keep(ctx.createOscillator()), pg = ctx.createGain();
+  pop.type = 'sine';
+  pop.frequency.setValueAtTime(260, t0); pop.frequency.exponentialRampToValueAtTime(720, t0 + 0.09);
+  pg.gain.setValueAtTime(0.0001, t0); pg.gain.exponentialRampToValueAtTime(0.5, t0 + 0.015); pg.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.16);
+  pop.connect(pg).connect(master); pop.start(t0); pop.stop(t0 + 0.2);
+
+  // 2. bell run: each note is a sine plus a quiet octave-and-a-fifth overtone, with a bell-like decay
+  const notes = [1046.5, 1318.5, 1568, 2093, 2637];
+  notes.forEach((hz, i) => {
+    const at = t0 + 0.1 + i * 0.085;
+    const last = i === notes.length - 1;
+    const len = last ? 1.5 : 0.7;
+    [[1, 0.2], [2.76, 0.045], [5.4, 0.015]].forEach(([mult, vol]) => {
+      const o = keep(ctx.createOscillator()), g = ctx.createGain();
+      o.type = 'sine'; o.frequency.value = hz * mult;
+      g.gain.setValueAtTime(0.0001, at);
+      g.gain.exponentialRampToValueAtTime(vol * (last ? 1.25 : 1), at + 0.012);
+      g.gain.exponentialRampToValueAtTime(0.0001, at + len);
+      o.connect(g).connect(master); o.start(at); o.stop(at + len + 0.05);
+    });
+  });
+
+  // 3. warm chord underneath (C major triad) that blooms and fades
+  const chordAt = t0 + 0.32;
+  [523.25, 659.25, 783.99].forEach((hz) => {
+    const o = keep(ctx.createOscillator()), g = ctx.createGain(), f = ctx.createBiquadFilter();
+    o.type = 'triangle'; o.frequency.value = hz;
+    f.type = 'lowpass'; f.frequency.value = 2200;
+    g.gain.setValueAtTime(0.0001, chordAt);
+    g.gain.exponentialRampToValueAtTime(0.09, chordAt + 0.18);
+    g.gain.exponentialRampToValueAtTime(0.0001, chordAt + 1.6);
+    o.connect(f).connect(g).connect(master); o.start(chordAt); o.stop(chordAt + 1.7);
+  });
+
+  // 4. shimmer: a few tiny high twinkles
+  [3136, 3951, 3520, 4186, 3136, 4699].forEach((hz, i) => {
+    const at = t0 + 0.55 + i * 0.075;
+    const o = keep(ctx.createOscillator()), g = ctx.createGain();
+    o.type = 'sine'; o.frequency.value = hz;
+    g.gain.setValueAtTime(0.0001, at); g.gain.exponentialRampToValueAtTime(0.04, at + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, at + 0.28);
+    o.connect(g).connect(master); o.start(at); o.stop(at + 0.32);
+  });
+}
+
 /* ---------- small shared pieces ---------- */
 function Wave() {
   return (
@@ -382,6 +443,10 @@ function LimitationsSlide() {
 /* ---------- 7. References (APA 7) ---------- */
 const Doi = ({ url }) => <a href={url} target="_blank" rel="noopener noreferrer">{url}</a>;
 function ReferencesSlide({ step, onClose }) {
+  useEffect(() => {
+    if (step >= 1) playAck();
+    return () => stopAck();
+  }, [step >= 1]);
   return (
     <section className="slide">
       <p className="eyebrow">Part 7</p>
